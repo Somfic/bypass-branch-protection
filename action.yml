@@ -1,13 +1,23 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Bypass branch protection"
+description: "Bypasses branch protection rules"
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  backup:
+    description: "The branch generated protection backup JSON"
+    required: false
+  branch:
+    description: "The branch to target"
     required: true
-    default: '1000'
+    default: main
+  token:
+    description: "GitHub user token with administrative privileges"
+    required: true
+  repository:
+    description: "The repository to target (<Owner>/<Repository>)"
+    required: true
+    default: ${{github.repository}}
 outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  backup:
+    description: "The branch generated protection backup JSON"
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
