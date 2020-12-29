@@ -182,7 +182,11 @@ async function run() {
       core.info("Bypass disabled");
     }
   } catch (error) {
-    core.setFailed(error.message);
+    if (error.includes("Branch not protected")) {
+      core.info("Branch is not protected, skipping");
+    } else {
+      core.setFailed(error.message);
+    }
   }
 }
 
