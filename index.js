@@ -10,7 +10,7 @@ async function run() {
     const repository = core.getInput("repository");
 
     const protectionOptions = {
-      url: `https://api.github.com/repos/${repository}/branches/master/protection`,
+      url: `https://api.github.com/repos/${repository}/branches/${branch}/protection`,
       headers: {
         Accept: "application/vnd.github.v3+json",
         Authorization: `token ${token}`,
@@ -19,7 +19,7 @@ async function run() {
     };
 
     let protectionUpdateOptions = {
-      url: `https://api.github.com/repos/${repository}/branches/master/protection`,
+      url: `https://api.github.com/repos/${repository}/branches/${branch}/protection`,
       headers: {
         Accept: "application/vnd.github.luke-cage-preview+json",
         Authorization: `token ${token}`,
@@ -29,7 +29,7 @@ async function run() {
     };
 
     const protectionReviewsOptions = {
-      url: `https://api.github.com/repos/${repository}/branches/master/protection/required_pull_request_reviews`,
+      url: `https://api.github.com/repos/${repository}/branches/${branch}/protection/required_pull_request_reviews`,
       headers: {
         Accept: "application/vnd.github.luke-cage-preview+json",
         Authorization: `token ${token}`,
